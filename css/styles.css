@@ -4,7 +4,7 @@ body {
   color: white;
   font-family: 'Playfair Display', serif;
   /* NEW */
-  transition: all 3s;
+  transition: all 1.5s;
 }
 #quote-box {
   position: absolute;
@@ -13,17 +13,6 @@ body {
   right: 10%;
   width: 80%;
   line-height: .5;
-  /* NEW */
-  /*transition: all 3s;*/
-  opacity: 0;
-  transition: all 3s;
-}
-/* TEST */
-body, #quote-box, .quote, .source, .occupation, .citation,
-.year, .tags {
-  /* NEW */
-  /*opacity: 1;*/
-  /*transition: all 3s;*/
 }
 .quote {
   font-size: 4rem;
@@ -69,7 +58,7 @@ body, #quote-box, .quote, .source, .occupation, .citation,
   content: ", ";
   font-style: normal;
 }
-/* MY NEW STYLES*/
+/* NEW */
 .occupation {
   font-style: italic;
 }
@@ -84,7 +73,6 @@ body, #quote-box, .quote, .source, .occupation, .citation,
   content: " #";
   font-style: normal;
 }
-
 
 #loadQuote {
   position: fixed;

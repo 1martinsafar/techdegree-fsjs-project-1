@@ -1,11 +1,6 @@
 // Array of quote objects
 const quotes = [
   {
-    // where the quote comes from, like a speech or publication.
-    // For example, "Famous Anonymous Jokes."
-    // If there is no known publication, do not include this property on the object.
-    // For example, 1997.
-    // If there is no known date, then do not include this property on the object.
     quote: "You can do anything but not everything",
     source: "David Allen",
     occupation: "American management consultant and author",
@@ -45,6 +40,9 @@ const quotes = [
   }
 ];
 
+// Refreshes the quote each 30 seconds
+let refreshQuote = setInterval(printQuote, 30000);
+
 // Returns a random number 0-255
 function randomRGB() {
   return Math.floor(Math.random() * 256);
@@ -61,12 +59,9 @@ function randomColor() {
 
 // returns a randomly selected quote object
 function getRandomQuote() {
-  // console.log("Quotes Count: " + quotes.length);
   // returns 0 - 5 -> valid indexes
   let randomIndex = Math.floor(Math.random() * quotes.length);
-  // console.log(randomIndex);
   let randomQuote = quotes[randomIndex];
-  // console.log(randomQuote);
   return randomQuote;
 }
 
@@ -86,51 +81,21 @@ function printQuote() {
   contentHTML += '<span class="tags">' + quote.tags + '</span>';
   contentHTML += '</p>';
 
+  // Resetting the quote refresh when the button is clicked (to avoid too fast refresh)
+  clearInterval(refreshQuote);
+  refreshQuote = setInterval(printQuote, 30000);
+  // Changing the background color to a randomly generated color
   document.querySelector('body').style.backgroundColor = randomColor();
-  // console.log(contentHTML);
+  // Displaying the quote content
   document.getElementById('quote-box').innerHTML = contentHTML;
-  document.getElementById('quote-box').style.opacity = "1";
 }
-
-/*
-<p class="quote"> Quote Text</p>
-<p class="source"> Author
-     <span class="occupation"></span>
-     <span class="citation">Where</span>  // OPTIONAL
-     <span class="year">When</span>       // OPTIONAL
-     <span class="tags"></span>
-</p>
-
-quote:
-source:
-occupation:
-citation:
-year:
-tags:
-*/
 
 // event listener to respond to "Show another quote" button clicks
 // when user clicks anywhere on the button, the "printQuote" function is called
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
-// Refreshes the quote each 30 seconds
-let refreshQuote = setInterval(printQuote, 30000);
-
 // Displaying the initial random quote on the page
 printQuote();
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
