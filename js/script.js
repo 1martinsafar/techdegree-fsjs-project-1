@@ -49,6 +49,7 @@ const quotes = [
 function randomRGB() {
   return Math.floor(Math.random() * 256);
 }
+
 // Returns a random RGB color
 function randomColor() {
   let color = 'rgb(';
@@ -58,8 +59,7 @@ function randomColor() {
   return color;
 }
 
-// => selects a random quote object from the quotes array
-// => returns the randomly selected quote object
+// returns a randomly selected quote object
 function getRandomQuote() {
   // console.log("Quotes Count: " + quotes.length);
   // returns 0 - 5 -> valid indexes
@@ -70,15 +70,7 @@ function getRandomQuote() {
   return randomQuote;
 }
 
-// => printQuote calls the getRandomQuote function and
-//    stores the returned quote object in a variable
-// => printQuote constructs a string containing the different properties
-//    of the quote object using the following HTML template:
-// => printQuote doesn't add a for a missing citation or
-//    a if the year property is missing
-// => printQuote displays the final HTML string to the page.
-//    You can use this JS snippet to accomplish that:
-//    document.getElementById('quote-box').innerHTML
+// Displays the final quote content to the page
 function printQuote() {
   let quote = getRandomQuote();
   let contentHTML = '';
@@ -97,6 +89,7 @@ function printQuote() {
   document.querySelector('body').style.backgroundColor = randomColor();
   // console.log(contentHTML);
   document.getElementById('quote-box').innerHTML = contentHTML;
+  document.getElementById('quote-box').style.opacity = "1";
 }
 
 /*
@@ -120,7 +113,8 @@ tags:
 // when user clicks anywhere on the button, the "printQuote" function is called
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
-// getRandomQuote();
+// Refreshes the quote each 30 seconds
+let refreshQuote = setInterval(printQuote, 30000);
 
 // Displaying the initial random quote on the page
 printQuote();
